@@ -1,0 +1,14 @@
+{
+  "name": "tron-create2",
+  "version": "0.0.1",
+  "scripts": {
+    "compile": "tronbox compile",
+    "migrate": "tronbox migrate --network shasta",
+    "test": "tronbox test --network shasta"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "tronweb": "^6.0.4"
+  }
+}
