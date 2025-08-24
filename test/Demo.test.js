@@ -1,7 +1,7 @@
 const Demo = artifacts.require('./Demo.sol');
 const Template = artifacts.require('./Template.sol');
 const { TronWeb } = require('tronweb');
-const { stringToHex } = require('../lib/helpers');
+const { stringToHex } = require('../lib/create2');
 
 const tronWeb = new TronWeb({
   fullHost: 'https://api.shasta.trongrid.io',
@@ -20,6 +20,18 @@ contract('Demo', (accounts) => {
     console.log('Demo contract address (base58):', tronWeb.address.fromHex(demoInstance.address));
     console.log('Template contract address (hex):', templateInstance.address);
     console.log('Template contract address (base58):', tronWeb.address.fromHex(templateInstance.address));
+  });
+
+  describe('Predict Address', () => {
+    it('should predict the same address', () => {
+      const address = predictDeterministicAddress({
+        implementation: "TL2ScqgY9ckK5h1VQExuMNrweyVSSdAtHa",
+        deployer: "TFgphAx29XEwrS8feFMpPfqzypjYzNysSH",
+        salt: "tron-network-salt",
+      });
+
+      assert.equal(address, "TQGeReoGywayLjiFDedvJTrxAALh7uZnqH");
+    });
   });
 
   describe('Clone2 functionality', () => {

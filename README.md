@@ -85,16 +85,3 @@ pnpm test
 2. **Deterministic Deployment**: Using the same implementation and salt will always result in the same contract address, making deployments predictable and repeatable.
 
 3. **Clone Pattern**: Instead of deploying full contract bytecode each time, the system deploys minimal proxies that delegate calls to an implementation contract, saving significant gas costs.
-
-## Testing
-
-The test suite covers:
-- Address prediction accuracy
-- Successful deployment to predicted addresses
-- Clone functionality verification
-- Event emission validation
-
-Run tests with:
-```bash
-npm run test
-```
